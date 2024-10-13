@@ -46,9 +46,11 @@ class CountController extends Controller
             'count' => 'required|integer|min:1',
         ]);
 
+        // Create a new inventory valued crop
         InventoryValuedCrop::create($request->all());
 
-        return redirect()->back()->with('success', 'Crop added successfully.');
+        // Redirect to the count view with success message
+        return redirect()->route('admin.hvcdp.count')->with('success', 'Crop added successfully.');
     }
 
     // Show the form for editing the specified crop

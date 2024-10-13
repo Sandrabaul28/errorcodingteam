@@ -34,7 +34,7 @@ class AffiliationController extends Controller
         ]);
 
         // Iredirect ang user pabalik sa index page na may success message
-        return redirect()->route('affiliations.index')
+        return redirect()->route('admin.affiliations.index')
                          ->with('success', 'Affiliation successfully created.');
     }
 }

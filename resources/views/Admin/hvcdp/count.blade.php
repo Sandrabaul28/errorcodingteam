@@ -4,7 +4,7 @@
 <div class="container">
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 text-primary"><span class="font-weight-bold">HIGH VALUED CROPS DEVELOPMENT PROGRAM</span></h6>
+            <h6 class="m-0 text-success"><span class="font-weight-bold">HIGH VALUED CROPS DEVELOPMENT PROGRAM</span></h6>
         </div>
 
         @if ($errors->any())
@@ -24,21 +24,24 @@
                 </div>
             @endif
 
-            <form action="{{ route('hvcdp.store') }}" method="POST" id="crop-form">
-                @csrf
-                <div class="form-group">
+            <form action="{{ route('admin.hvcdp.store') }}" method="POST" id="crop-form">
+            @csrf
+            <div class="form-row">
+                <!-- Farmer input -->
+                <div class="form-group col-md-4">
                     <label for="farmer_name">Name of Farmer <span style="color: red;">*</span></label>
                     <input list="farmers" id="farmer_name" name="farmer_name" class="form-control" required>
                     <datalist id="farmers">
                         @foreach($farmers as $farmer)
-                            <option value="{{ $farmer->first_name }} {{ $farmer->last_name }} {{ $farmer->affiliation_id}} " data-id="{{ $farmer->id }}"></option>
+                            <option value="{{ $farmer->first_name }} {{ $farmer->last_name }} {{ $farmer->affiliation_id }}" data-id="{{ $farmer->id }}"></option>
                         @endforeach
                     </datalist>
                     <!-- Hidden field to store the farmer_id -->
                     <input type="hidden" name="farmer_id" id="farmer_id">
                 </div>
 
-                <div class="form-group">
+                <!-- Plant input -->
+                <div class="form-group col-md-4">
                     <label for="plant_name">Name of Plant <span style="color: red;">*</span></label>
                     <input list="plants" id="plant_name" name="plant_name" class="form-control" required>
                     <datalist id="plants">
@@ -50,15 +53,18 @@
                     <input type="hidden" name="plant_id" id="plant_id">
                 </div>
 
-                <div class="form-group">
+                <!-- Count input -->
+                <div class="form-group col-md-4">
                     <label for="count">Count <span style="color: red;">*</span></label>
                     <input type="number" name="count" class="form-control" required>
                 </div>
+            </div>
 
-                <button type="submit" class="btn btn-success">Add</button>
-                <a href="{{ route('farmers.create') }}" class="btn btn-warning">Add Farmer</a>
+            <!-- Submit and Add Farmer buttons -->
+            <button type="submit" class="btn btn-success">Add</button>
+            <a href="{{ route('admin.farmers.create') }}" class="btn btn-warning">Add Farmer</a>
+        </form>
 
-            </form>
 
 <script>
     // Get the farmer input and hidden field
@@ -93,7 +99,7 @@
 <hr>
 <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 text-primary"><span class="font-weight-bold">Recorded Inventory</span></h6>
+            <h6 class="m-0 text-success"><span class="font-weight-bold">Recorded Inventory</span></h6>
         </div>
         <div class="card-body">
             <table class="table table-bordered" id="inventory-table">
@@ -219,7 +225,7 @@ $(document).ready(function() {
     $('.btn-edit').click(function() {
         var id = $(this).data('id');
         $.ajax({
-            url: '{{ route("hvcdp.edit", ":id") }}'.replace(':id', id),
+            url: '{{ route("admin.hvcdp.edit", ":id") }}'.replace(':id', id),
             method: 'GET',
             success: function(data) {
                 // Populate the modal fields with the data
@@ -246,7 +252,7 @@ $(document).ready(function() {
             _token: '{{ csrf_token() }}' // CSRF token for security
         };
         $.ajax({
-            url: '{{ route("hvcdp.update", ":id") }}'.replace(':id', id),
+            url: '{{ route("admin.hvcdp.update", ":id") }}'.replace(':id', id),
             method: 'POST',
             data: formData,
             success: function(data) {

@@ -3,7 +3,7 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 text-primary">ROLES MANAGEMENT / <span class="font-weight-bold">ADD NEW USER / USER LISTS </span></h6>
+        <h6 class="m-0 text-success">ROLES MANAGEMENT / <span class="font-weight-bold">ADD NEW USER / USER LISTS </span></h6>
     </div>
     <div class="card-body">
         @if (session('success'))
@@ -89,7 +89,7 @@
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 text-primary">USER LISTS</h6>
+        <h6 class="m-0 text-success">USER LISTS</h6>
     </div>
     <div class="card-body">
 

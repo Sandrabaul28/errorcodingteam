@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Farmer;
 use App\Models\Affiliation;
+use App\Models\InventoryValuedCrop;
 use App\Exports\HVCDPExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
@@ -53,6 +54,26 @@ class HVCDPController extends Controller
         return view('admin.hvcdp.index', compact('affiliations', 'farmers', 'uniquePlants'), [
             'title' => 'HVCDP - Records'
         ]);
+    }
+
+    public function store(Request $request)
+    {
+        // Validate the form input
+        $request->validate([
+            'farmer_id' => 'required|exists:farmers,id',
+            'plant_id' => 'required|exists:plants,id',
+            'count' => 'required|integer|min:1',
+        ]);
+
+        // Store the new inventory record
+        InventoryValuedCrop::create([
+            'farmer_id' => $request->farmer_id,
+            'plant_id' => $request->plant_id,
+            'count' => $request->count,
+        ]);
+
+        // Redirect back with success message
+        return redirect()->route('admin.hvcdp.index')->with('success', 'Record added successfully!');
     }
 
     public function create()

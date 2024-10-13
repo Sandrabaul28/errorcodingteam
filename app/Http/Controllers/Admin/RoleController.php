@@ -19,7 +19,7 @@ class RoleController extends Controller
 
     public function index()
     {
-
+        
         $users = User::with('role')->get();
         return view('admin.roles.index', compact('users'), [
             'title' => 'Role Management'
@@ -28,7 +28,7 @@ class RoleController extends Controller
 
     public function createUser()
     {
-        $roles = Role::all();
+        $roles = Role::whereIn('id', [1, 3])->get();
         $affiliations = Affiliation::all();
         return view('admin.roles.createUser', compact('roles', 'affiliations'), [
             'title' => 'Create User',

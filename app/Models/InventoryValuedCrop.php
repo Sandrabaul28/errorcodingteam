@@ -27,4 +27,9 @@ class InventoryValuedCrop extends Model
     {
         return $this->belongsTo(Plant::class, 'plant_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'aggregator_user_id'); // Adjust the foreign key as necessary
+    }
+
 }

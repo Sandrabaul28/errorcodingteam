@@ -15,7 +15,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ asset('assets/img/logo1.png')}}" class="circular-logo">
+    <link rel="shortcut icon" href="{{ asset('assets/img/LOGO2.png')}}" class="circular-logo">
     
 </head>
 <body id="page-top">
@@ -27,7 +27,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon" style="display: flex; align-items: center; justify-content: center;">
-                    <img src="{{ asset('assets/img/logo1.png') }}" alt="logo" style="width: 50px; height: 50px; border-radius: 50%;">
+                    <img src="{{ asset('assets/img/LOGO2.png') }}" alt="logo" style="width: 50px; height: 50px; border-radius: 50%;">
                 </div>
                 <div class="sidebar-brand-text" style="margin: 1px;">BONTOC CROPS</div>
             </a>
@@ -52,7 +52,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+           <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-folder"></i>
@@ -60,14 +60,12 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Menu:</h6>
-                        <a class="collapse-item" href="{{ route('admin.inventory.record')}}">Barangay Lists</a>
-                        <a class="collapse-item" href="{{ route('admin.inventory.create')}}">Add Barangay</a>
-                        
+                        <h6 class="collapse-header">HVCDP Section:</h6>
+                        <a class="collapse-item" href="">Crop Data Summary</a>
+                        <a class="collapse-item" href="">Crop Data Records</a>
                     </div>
                 </div>
             </li>
-
             <!-- Nav Item - Utilities Collapse Menu -->
             
             <!-- Divider -->

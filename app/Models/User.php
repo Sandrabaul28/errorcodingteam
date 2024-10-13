@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id');
     }
 
+    public function farmer()
+    {
+        return $this->hasOne(Farmer::class);
+    }
+
     /**
      * Get the affiliation associated with the user.
      */
@@ -60,4 +65,5 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Affiliation::class, 'affiliation_id');
     }
+
 }

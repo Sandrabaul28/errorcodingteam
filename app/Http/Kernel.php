@@ -45,7 +45,11 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
         'admin' => [
-            'auth',  // or any specific middleware required for admins
+            'auth',  
+            \App\Http\Middleware\DisableCache::class,
+        ],
+        'aggregator' => [
+            'auth',  
             \App\Http\Middleware\DisableCache::class,
         ],
     ];
@@ -59,7 +63,6 @@ class Kernel extends HttpKernel
      */
     protected $middlewareAliases = [
         'auth' => \App\Http\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
@@ -73,12 +76,13 @@ class Kernel extends HttpKernel
 
     ];
     protected $routeMiddleware = [
-    // Other middleware
-    'auth' => \App\Http\Middleware\Authenticate::class,
-    'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-    // Other middleware
-    'admin' => \App\Http\Middleware\AdminMiddleware::class,
-];
+        // Other middleware
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth.redirect' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'admin' => \App\Http\Middleware\admin::class,
+        'aggregator' => \App\Http\Middleware\aggregator::class,
+        'role' => \App\Http\Middleware\RoleMiddleware::class,
+    ];
 
 
 }

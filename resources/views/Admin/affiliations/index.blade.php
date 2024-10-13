@@ -3,7 +3,7 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 text-primary">ROLES MANAGEMENT / <span class="font-weight-bold">ADD AFFILIATION / AFFILIATION LISTS</span></h6>
+        <h6 class="m-0 text-success">ROLES MANAGEMENT / <span class="font-weight-bold">ADD AFFILIATION / AFFILIATION LISTS</span></h6>
     </div>
     <div class="card-body">
         @if (session('success'))
@@ -13,7 +13,7 @@
         @endif
 
         <!-- Form to create a new affiliation -->
-        <form action="{{ route('affiliations.store') }}" method="POST">
+        <form action="{{ route('admin.affiliations.store') }}" method="POST">
             @csrf
             <div class="form-row mb-3">
                 <div class="col">
@@ -26,7 +26,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-success">Save</button>
-            <a href="{{ route('farmers.create') }}" class="btn btn-warning">Add Farmer</a>
+            <a href="{{ route('admin.farmers.create') }}" class="btn btn-warning">Add Farmer</a>
         </form>
     </div>
 </div>
@@ -35,7 +35,7 @@
 <!-- Display the list of affiliations -->
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 text-primary">AFFILIATION LISTS</h6>
+        <h6 class="m-0 text-success">AFFILIATION LISTS</h6>
     </div>
     <div class="card-body">
         <div class="row">

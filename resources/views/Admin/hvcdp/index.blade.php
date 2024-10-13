@@ -3,32 +3,32 @@
 @section('content')
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 text-primary">HVCDP Records</h6>
+        <h6 class="m-0 text-success">HVCDP Records</h6>
     </div>
     <div class="card-body">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <a href="{{ route('hvcdp.count')}}" class="btn btn-primary">Add Record</a>
+            <a href="{{ route('admin.hvcdp.count')}}" class="btn btn-primary">Add Record</a>
             <div>
-                <a href="{{ route('hvcdp.print', ['from_date' => request('from_date'), 'to_date' => request('to_date'), 'barangay' => request('barangay')]) }}" class="btn btn-primary" target="_blank">Print</a>
+                <a href="{{ route('admin.hvcdp.print', ['from_date' => request('from_date'), 'to_date' => request('to_date'), 'barangay' => request('barangay')]) }}" class="btn btn-primary" target="_blank">Print</a>
                 <button class="btn btn-secondary">CSV</button>
-                <a href="{{ route('hvcdp.exportExcel', ['barangay' => request('barangay'), 'from_date' => request('from_date'), 'to_date' => request('to_date')]) }}" class="btn btn-success" target="_blank">Export Excel</a>
+                <a href="{{ route('admin.hvcdp.exportExcel', ['barangay' => request('barangay'), 'from_date' => request('from_date'), 'to_date' => request('to_date')]) }}" class="btn btn-success" target="_blank">Export Excel</a>
 
             </div>
         </div>
 
         <div class="mb-4">
             <!-- Filter by Date Form -->
-            <form action="{{ route('hvcdp.index') }}" method="GET" class="form-inline mb-3">
+            <form action="{{ route('admin.hvcdp.index') }}" method="GET" class="form-inline mb-3">
                 <label for="from_date">From: </label>
                 <input type="date" name="from_date" id="from_date" class="form-control mx-2">
                 <label for="to_date">To: </label>
                 <input type="date" name="to_date" id="to_date" class="form-control mx-2">
                 <button type="submit" class="btn btn-success mx-2">Filter</button>
-                <a href="{{ route('hvcdp.index') }}" class="btn btn-secondary mx-2">Reset</a>
+                <a href="{{ route('admin.hvcdp.index') }}" class="btn btn-secondary mx-2">Reset</a>
             </form>
 
             <!-- Filter by Barangay Form -->
-            <form action="{{ route('hvcdp.index') }}" method="GET" class="form-inline">
+            <form action="{{ route('admin.hvcdp.index') }}" method="GET" class="form-inline">
                 <label for="barangay">Filter by Barangay: </label>
                 <select name="barangay" id="barangay" class="form-control mx-2">
                     <option value="">-- Select Barangay --</option>
@@ -37,7 +37,7 @@
                     @endforeach
                 </select>
                 <button type="submit" class="btn btn-success mx-2">Filter</button>
-                <a href="{{ route('hvcdp.index') }}" class="btn btn-secondary mx-2">Reset</a>
+                <a href="{{ route('admin.hvcdp.index') }}" class="btn btn-secondary mx-2">Reset</a>
             </form>
         </div>
 
@@ -93,7 +93,7 @@
                 <!-- Edit Modal -->
                 <div class="modal fade" id="editModal{{ $farmer->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $farmer->id }}" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <form action="{{ route('hvcdp.update', $farmer->id) }}" method="POST">
+                        <form action="{{ route('admin.hvcdp.update', $farmer->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="modal-content">
@@ -148,7 +148,7 @@
                                 Are you sure you want to delete {{ $farmer->first_name }} {{ $farmer->last_name }}?
                             </div>
                             <div class="modal-footer">
-                                <form action="{{ route('hvcdp.destroy', $farmer->id) }}" method="POST">
+                                <form action="{{ route('admin.hvcdp.destroy', $farmer->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
